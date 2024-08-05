@@ -41,6 +41,9 @@ struct ContentView: View {
     private func eval() {
         let expression = display.replacingOccurrences(of: "÷", with: "/")
             .replacingOccurrences(of: "×", with: "*")
+        let exp: NSExpression = NSExpression(format: expression)
+        let result: NSNumber = exp.expressionValue(with: nil, context: nil) as! NSNumber
+        display = result.stringValue
     }
     
     var body: some View {
@@ -61,9 +64,10 @@ struct ContentView: View {
                                 .font(.largeTitle)
                                 .frame(width: 80, height: 80)
                                 .background(button == "C" ?
-                                            Color.red.opacity(0.1) :
-                                                Color.blue.opacity(0.1))
+                                            Color.orange.opacity(1) :
+                                                Color.blue.opacity(1))
                                 .cornerRadius(20)
+                                .foregroundStyle(.white)
                         }
                     }
                 }
