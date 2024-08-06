@@ -50,9 +50,10 @@ struct ContentView: View {
         VStack(spacing: 12) {
             Spacer()
             Text(display)
-                .font(.largeTitle)
+                .font(.system(size: 50,design: .rounded))
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .trailing)
+                .lineLimit(nil)
             
             ForEach(buttons, id: \.self) { row in
                 HStack(spacing: 12) {
